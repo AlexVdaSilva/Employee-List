@@ -40,15 +40,15 @@ public class Program {
 		System.out.print("Enter the employee id that will have a salary increase: ");
 		int idSalary = sc.nextInt();
 		
-		Integer pos = position(empData, idSalary);
+		Employee emp = empData.stream().filter(x -> x.getId() == idSalary).findFirst().orElse(null);
 		
-		if (pos == null) {
+		if (emp == null) {
 			System.out.println("This id does not exist!");
 		}
 		else {
 			System.out.print("Enter the percentage: ");
 			double percentage = sc.nextDouble();
-			empData.get(pos).increaseSalary(percentage);
+			emp.increaseSalary(percentage);
 		}
 		
 		System.out.println();
@@ -59,15 +59,6 @@ public class Program {
 
 		sc.close();
 		
-	}
-	
-	public static Integer position(List <Employee> list, int id) {
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId() == id) {
-				return i;
-			}
-		}
-		return null;
 	}
 
 }
