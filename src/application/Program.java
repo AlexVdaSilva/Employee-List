@@ -24,6 +24,14 @@ public class Program {
 			System.out.println("Employee #" + (i+1) + ":");
 			System.out.print("Id: ");
 			Integer id = sc.nextInt();
+			//Created this while to verify the existing IDs and 
+			//to force the user to insert an ID not taken
+			while(hasId(empData, id)) {
+				System.out.println("Id already taken! Try again: ");
+				id = sc.nextInt();
+				
+			}
+			
 			System.out.print("Name: ");
 			sc.nextLine();
 			String name = sc.nextLine();
